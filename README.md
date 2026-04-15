@@ -1,4 +1,10 @@
 # 🇯🇵 JLPT Mock Test Platform - Setup Guide
+<img width="577" height="896" alt="image" src="https://github.com/user-attachments/assets/01c1ff0e-f883-4171-a279-b4c81cc5adff" />
+<img width="983" height="811" alt="image" src="https://github.com/user-attachments/assets/a87347b7-373b-45fc-89a8-4282e951c09c" />
+<img width="887" height="848" alt="image" src="https://github.com/user-attachments/assets/967c116c-c35b-4945-ba53-3c5e95bd82b0" />
+<img width="743" height="876" alt="image" src="https://github.com/user-attachments/assets/c7c9daf2-1470-4bbe-b920-8552b39f93c9" />
+<img width="613" height="806" alt="image" src="https://github.com/user-attachments/assets/f4a21737-7fdd-4f94-96be-0a0338628578" />
+
 
 This project is a high-fidelity JLPT Mock Test platform featuring a **FastAPI** backend and a **React (Vite)** frontend. It includes automated scoring, section-wise analysis, and audio integration.
 
