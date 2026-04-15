@@ -60,7 +60,7 @@ function App() {
   const handleAnswer = (questionId, selectedIndex) => {
     const newAnswers = [...answers];
     const existingIndex = newAnswers.findIndex(a => a.question_id === questionId);
-    
+
     if (existingIndex > -1) {
       newAnswers[existingIndex].selected_index = selectedIndex;
     } else {
@@ -70,7 +70,7 @@ function App() {
   };
 
   const submitTest = async (isAutoSubmitting = false) => {
-    if (loading) return; 
+    if (loading) return;
 
     // Only ask for confirmation if manually submitting
     if (!isAutoSubmitting) {
@@ -119,13 +119,13 @@ function App() {
       <div className="landing-container">
         <div className="booklet-cover">
           <header className="cover-header">
-            <div className="corner-left">Language Knowledge <span style={{fontSize: '0.8rem'}}>(Vocabulary)</span></div>
-            <div className="corner-right" style={{fontSize: '1.5rem'}}>もんだいようし</div>
+            <div className="corner-left">Language Knowledge <span style={{ fontSize: '0.8rem' }}>(Vocabulary)</span></div>
+            <div className="corner-right" style={{ fontSize: '1.5rem' }}>もんだいようし</div>
           </header>
 
           <main className="cover-title-group">
             <h1 className="cover-n-level">N5</h1>
-            <div className="cover-jp-title">げんごちしき <span style={{fontSize: '1.2rem'}}>(もじ・ごい)</span></div>
+            <div className="cover-jp-title">げんごちしき <span style={{ fontSize: '1.2rem' }}>(もじ・ごい)</span></div>
             <div className="cover-time">(25ふん)</div>
 
             <div className="notes-box">
@@ -167,9 +167,9 @@ function App() {
                   <span className="label-en">Examinee Registration Number</span>
                 </div>
                 <div className="field-input">
-                  <input 
-                    type="text" 
-                    value={examineeNumber} 
+                  <input
+                    type="text"
+                    value={examineeNumber}
                     onChange={(e) => setExamineeNumber(e.target.value)}
                     placeholder="12345678"
                   />
@@ -181,9 +181,9 @@ function App() {
                   <span className="label-en">Name</span>
                 </div>
                 <div className="field-input">
-                  <input 
-                    type="text" 
-                    value={examineeName} 
+                  <input
+                    type="text"
+                    value={examineeName}
                     onChange={(e) => setExamineeName(e.target.value)}
                     placeholder="JAPANESE LEARNER"
                   />
@@ -208,8 +208,7 @@ function App() {
 
   if (view === 'exam') {
     const question = questions[currentIndex];
-    const currentAnswer = answers.find(a => a.question_id === question.id);
-
+    const currentAnswer = answers.find(a => a.question_id === question.id);//
     return (
       <div className="exam-container">
         <div className="exam-header">
@@ -219,7 +218,7 @@ function App() {
               <div className="progress-fill" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}></div>
             </div>
           </div>
-          
+
           <div className={`timer-display ${timeLeft < 60 ? 'timer-urgent' : ''}`}>
             <span className="timer-icon">⏱️</span>
             <span className="timer-text">{formatTime(timeLeft)}</span>
@@ -231,7 +230,7 @@ function App() {
 
         <main className="question-area">
           <div className="mondai-label">{question.type}</div>
-          
+
           {question.audio_url && (
             <div className="audio-section">
               <p>🔊 Listening Focus: Click play to hear the question.</p>
@@ -250,7 +249,7 @@ function App() {
                 </React.Fragment>
               ))}
             </h2>
-            
+
             {question.image_url && (
               <div className="question-image">
                 <img src={question.image_url} alt="Question context" />
@@ -259,7 +258,7 @@ function App() {
 
             <div className="options-grid">
               {question.options.map((option, idx) => (
-                <button 
+                <button
                   key={idx}
                   className={`option-card ${currentAnswer?.selected_index === idx ? 'selected' : ''}`}
                   onClick={() => handleAnswer(question.id, idx)}
@@ -275,9 +274,9 @@ function App() {
         <footer className="nav-footer">
           <button onClick={prevQuestion} disabled={currentIndex === 0}>Previous</button>
           {currentIndex === questions.length - 1 ? (
-             <button className="submit-btn" onClick={submitTest} disabled={loading}>
-               {loading ? 'Submitting...' : 'Finish & See Results'}
-             </button>
+            <button className="submit-btn" onClick={submitTest} disabled={loading}>
+              {loading ? 'Submitting...' : 'Finish & See Results'}
+            </button>
           ) : (
             <button onClick={nextQuestion}>Next Question</button>
           )}
@@ -296,7 +295,7 @@ function App() {
             <div className="score-main">{result.score_percentage}%</div>
             <div className="score-sub">{result.correct_answers} Correct / {result.total_questions} Total</div>
           </div>
-          
+
           <div className="grade-box">
             {result.score_percentage >= 60 ? (
               <p className="pass">合格 (PASS!)</p>
@@ -311,9 +310,9 @@ function App() {
               <div key={idx} className="section-result-item">
                 <div className="section-name">{section.name}</div>
                 <div className="section-bar-container">
-                  <div 
-                    className="section-bar-fill" 
-                    style={{ 
+                  <div
+                    className="section-bar-fill"
+                    style={{
                       width: `${(section.correct / section.total) * 100}%`,
                       backgroundColor: (section.correct / section.total) >= 0.6 ? '#10b981' : '#ef4444'
                     }}
